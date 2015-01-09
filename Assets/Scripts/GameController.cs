@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameOverController : MonoBehaviour {
+public class GameController : MonoBehaviour {
 
     public PlayerMove player;
     Animator anim;
@@ -18,6 +18,11 @@ public class GameOverController : MonoBehaviour {
         if (player.doGameOver)
         {
             anim.SetTrigger("DoGameOver");
+        }
+
+        if(Input.GetButton("Quit"))
+        {
+            Application.Quit();
         }
     }
 }
