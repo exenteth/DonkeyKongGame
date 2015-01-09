@@ -33,9 +33,10 @@ public class PlayerMove : MonoBehaviour {
 
     void Update()
     {
+        CharacterController controller = GetComponent<CharacterController>();
         if (!isDead)
         {
-            CharacterController controller = GetComponent<CharacterController>();
+            
             if (controller.isGrounded)
             {
                 if (isNearLadder)
@@ -87,6 +88,9 @@ public class PlayerMove : MonoBehaviour {
 
         if (isDead)
         {
+            moveDirection = new Vector3(0, 0, 0);
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection * Time.deltaTime);
             GetComponentInChildren<Light>().transform.position = deathPosition + spotLightPositionOffset;
         }
     }
